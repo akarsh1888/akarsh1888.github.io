@@ -1,75 +1,637 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Akarsh Srivastava — GenAI & Agentic AI Engineer with 6+ years in software engineering and 2+ years building production LLM systems. LangGraph, multi-agent systems, RAG, AWS Bedrock, Azure OpenAI, Python." />
+  <meta name="author" content="Akarsh Srivastava" />
 
-    <script src="https://kit.fontawesome.com/b2ca679532.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+  <!-- Open Graph for sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Akarsh Srivastava — GenAI & Agentic AI Engineer" />
+  <meta property="og:description" content="6+ yrs software engineering · 2+ yrs production LLM systems. Multi-agent platforms, RAG, LLM evaluation on AWS & Azure." />
 
-    <title>Akarsh Srivastava | GenAI Engineer & Full Stack Developer</title>
+  <title>Akarsh Srivastava — GenAI & Agentic AI Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink:        #0a1020;
+      --ink-2:      #0e1728;
+      --panel:      #111d33;
+      --panel-2:    #16233d;
+      --line:       rgba(140, 170, 220, 0.14);
+      --line-soft:  rgba(140, 170, 220, 0.08);
+      --text:       #e7eefb;
+      --muted:      #93a4c4;
+      --muted-2:    #64748f;
+      --amber:      #f2b134;
+      --amber-soft: rgba(242, 177, 52, 0.14);
+      --cyan:       #6fd3d0;
+
+      --display: "Space Grotesk", sans-serif;
+      --body:    "IBM Plex Sans", system-ui, sans-serif;
+      --mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+      --maxw: 1120px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--body);
+      background-color: var(--ink);
+      /* faint blueprint grid */
+      background-image:
+        linear-gradient(var(--line-soft) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+      background-size: 44px 44px;
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ---------- typographic system ---------- */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--amber);
+      text-transform: none;
+      margin-bottom: 0.9rem;
+      display: inline-block;
+    }
+    .eyebrow::before { content: "// "; color: var(--muted-2); }
+
+    h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.12; letter-spacing: -0.01em; }
+
+    .section-title { font-size: clamp(1.6rem, 3.5vw, 2.4rem); margin-bottom: 2.4rem; }
+
+    /* ---------- nav ---------- */
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(10, 16, 32, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .brand { font-family: var(--display); font-weight: 700; font-size: 1.05rem; letter-spacing: -0.02em; }
+    .brand .dot { color: var(--amber); }
+    .nav-links { display: flex; gap: 1.9rem; font-family: var(--mono); font-size: 0.85rem; }
+    .nav-links a { color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); }
+    .nav-cta {
+      font-family: var(--mono); font-size: 0.82rem;
+      border: 1px solid var(--amber); color: var(--amber);
+      padding: 0.42rem 0.95rem; border-radius: 4px; transition: all 0.2s;
+    }
+    .nav-cta:hover, .nav-cta:focus-visible { background: var(--amber); color: var(--ink); }
+    .nav-toggle { display: none; background: none; border: 0; color: var(--text); font-family: var(--mono); cursor: pointer; font-size: 0.9rem; }
+
+    /* ---------- hero ---------- */
+    .hero { padding: clamp(3rem, 8vw, 6rem) 0 clamp(2.5rem, 6vw, 4.5rem); }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3rem; align-items: center; }
+    .hero h1 { font-size: clamp(2.3rem, 5.6vw, 3.9rem); font-weight: 700; }
+    .hero h1 .accent { color: var(--amber); }
+    .type-line { display: block; min-height: 1.2em; margin-top: 0.2rem; }
+    .type-line .cursor { color: var(--amber); font-weight: 400; animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .hero .lead { color: var(--muted); font-size: clamp(1.02rem, 1.7vw, 1.18rem); max-width: 46ch; margin: 1.4rem 0 1.2rem; }
+
+    .hero-meta { font-family: var(--mono); font-size: 0.82rem; color: var(--muted-2); margin-bottom: 1.9rem; }
+    .hero-meta span { color: var(--cyan); }
+
+    .btn-row { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .btn {
+      font-family: var(--mono); font-size: 0.88rem;
+      padding: 0.7rem 1.3rem; border-radius: 5px; transition: all 0.2s; cursor: pointer; border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--amber); color: var(--ink); font-weight: 500; }
+    .btn-primary:hover, .btn-primary:focus-visible { transform: translateY(-2px); box-shadow: 0 8px 22px -8px var(--amber); }
+    .btn-ghost { border-color: var(--line); color: var(--text); }
+    .btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--amber); color: var(--amber); }
+
+    /* ---------- signature: agent graph ---------- */
+    .graph-card {
+      border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(160deg, var(--panel), var(--ink-2));
+      padding: 1.1rem; position: relative; overflow: hidden;
+    }
+    .graph-card .tag { position: absolute; top: 0.85rem; left: 1.1rem; font-family: var(--mono); font-size: 0.72rem; color: var(--muted-2); }
+    .graph-card svg { width: 100%; height: auto; display: block; }
+    .node-box { fill: var(--panel-2); stroke: var(--line); }
+    .node-box.hot { stroke: var(--amber); }
+    .node-label { font-family: var(--mono); font-size: 11px; fill: var(--text); }
+    .node-sub { font-family: var(--mono); font-size: 8.5px; fill: var(--muted-2); }
+    .edge { stroke: var(--line); stroke-width: 1.4; fill: none; }
+    .edge-flow {
+      stroke: var(--amber); stroke-width: 1.6; fill: none;
+      stroke-dasharray: 6 120; stroke-dashoffset: 0;
+      animation: flow 3.2s linear infinite;
+    }
+    @keyframes flow { to { stroke-dashoffset: -126; } }
+
+    /* ---------- metrics strip ---------- */
+    .metrics { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .metric { padding: 1.8rem 1.2rem; border-left: 1px solid var(--line-soft); }
+    .metric:first-child { border-left: 0; }
+    .metric .num { font-family: var(--display); font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; color: var(--text); }
+    .metric .num .u { color: var(--amber); }
+    .metric .cap { font-family: var(--mono); font-size: 0.76rem; color: var(--muted); margin-top: 0.35rem; }
+
+    /* ---------- generic section ---------- */
+    section.block { padding: clamp(3.2rem, 7vw, 5.5rem) 0; }
+    .section-head { border-left: 3px solid var(--amber); padding-left: 1rem; margin-bottom: 2.6rem; }
+    .section-head .section-title { margin-bottom: 0; }
+
+    /* about */
+    .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.5rem; }
+    .about p { color: var(--muted); margin-bottom: 1rem; max-width: 62ch; }
+    .about p strong { color: var(--text); font-weight: 600; }
+    .facts { border: 1px solid var(--line); border-radius: 10px; padding: 1.4rem; background: var(--ink-2); align-self: start; }
+    .facts dl { display: grid; grid-template-columns: auto 1fr; gap: 0.55rem 1rem; font-size: 0.9rem; }
+    .facts dt { font-family: var(--mono); font-size: 0.76rem; color: var(--muted-2); }
+    .facts dd { color: var(--text); }
+
+    /* skills */
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .skill-card { border: 1px solid var(--line); border-radius: 10px; padding: 1.3rem 1.4rem; background: var(--ink-2); transition: border-color 0.25s, transform 0.25s; }
+    .skill-card:hover { border-color: var(--amber); transform: translateY(-3px); }
+    .skill-card h3 { font-size: 0.82rem; font-family: var(--mono); font-weight: 500; color: var(--amber); letter-spacing: 0.03em; margin-bottom: 0.9rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .chip { font-family: var(--mono); font-size: 0.76rem; color: var(--text); background: var(--panel); border: 1px solid var(--line-soft); padding: 0.24rem 0.6rem; border-radius: 4px; }
+
+    /* experience timeline */
+    .xp { position: relative; padding-left: 2rem; }
+    .xp::before { content: ""; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 1px; background: var(--line); }
+    .xp-item { position: relative; padding-bottom: 2.6rem; }
+    .xp-item:last-child { padding-bottom: 0; }
+    .xp-item::before {
+      content: ""; position: absolute; left: -1.72rem; top: 6px; width: 11px; height: 11px; border-radius: 50%;
+      background: var(--ink); border: 2px solid var(--amber);
+    }
+    .xp-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 0.9rem; margin-bottom: 0.2rem; }
+    .xp-role { font-family: var(--display); font-size: 1.18rem; font-weight: 600; }
+    .xp-co { color: var(--amber); font-weight: 600; }
+    .xp-date { font-family: var(--mono); font-size: 0.78rem; color: var(--muted-2); margin-left: auto; }
+    .xp-list { list-style: none; margin-top: 0.8rem; display: grid; gap: 0.55rem; }
+    .xp-list li { position: relative; padding-left: 1.3rem; color: var(--muted); font-size: 0.95rem; }
+    .xp-list li::before { content: "▸"; position: absolute; left: 0; color: var(--amber); font-size: 0.8rem; }
+    .xp-list li b { color: var(--text); font-weight: 600; }
+    .xp-stack { font-family: var(--mono); font-size: 0.76rem; color: var(--muted-2); margin-top: 0.9rem; }
+
+    /* projects */
+    .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+    .proj {
+      border: 1px solid var(--line); border-radius: 12px; padding: 1.6rem; background: linear-gradient(160deg, var(--ink-2), var(--ink));
+      transition: border-color 0.25s, transform 0.25s; display: flex; flex-direction: column;
+    }
+    .proj:hover { border-color: var(--amber); transform: translateY(-4px); }
+    .proj-num { font-family: var(--mono); font-size: 0.78rem; color: var(--muted-2); margin-bottom: 0.6rem; }
+    .proj h3 { font-size: 1.22rem; margin-bottom: 0.7rem; }
+    .proj p { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.1rem; flex: 1; }
+    .proj .chips { margin-top: auto; }
+
+    /* education + certs */
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+    .card {
+      border: 1px solid var(--line); border-radius: 10px; padding: 1.4rem 1.5rem; background: var(--ink-2);
+    }
+    .card h3 { font-size: 1.02rem; margin-bottom: 0.3rem; }
+    .card .meta { font-family: var(--mono); font-size: 0.78rem; color: var(--muted-2); }
+    .card p { color: var(--muted); font-size: 0.9rem; margin-top: 0.3rem; }
+    .cert-list { list-style: none; display: grid; gap: 0.7rem; }
+    .cert-list li { display: flex; gap: 0.7rem; align-items: flex-start; color: var(--text); font-size: 0.92rem; }
+    .cert-list li::before { content: "✓"; color: var(--amber); font-family: var(--mono); }
+
+    /* contact */
+    .contact { text-align: center; }
+    .contact h2 { font-size: clamp(1.8rem, 4.5vw, 2.8rem); margin-bottom: 0.9rem; }
+    .contact p { color: var(--muted); max-width: 48ch; margin: 0 auto 2rem; }
+    .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem; }
+    .clink {
+      font-family: var(--mono); font-size: 0.88rem; border: 1px solid var(--line); border-radius: 6px;
+      padding: 0.7rem 1.2rem; color: var(--text); transition: all 0.2s;
+    }
+    .clink:hover, .clink:focus-visible { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
+
+    footer.foot { border-top: 1px solid var(--line); padding: 2rem 0; }
+    .foot-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; font-family: var(--mono); font-size: 0.8rem; color: var(--muted-2); }
+
+    /* reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* focus visibility */
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 3px; }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+      .graph-card { order: -1; max-width: 420px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .metric:nth-child(3) { border-left: 0; }
+      .skills-grid, .proj-grid, .edu-grid { grid-template-columns: 1fr; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: block; }
+      .nav-links.open {
+        display: flex; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column;
+        background: var(--ink-2); border-bottom: 1px solid var(--line); padding: 1rem 1.5rem; gap: 1rem;
+      }
+      .xp-date { margin-left: 0; width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header id="header">
-
-        <div id="header-home">
-            <nav id='main-nav' class="container">
-                <ul>
-                     <li><a href="index.html" class="current">Home</a></li>
-                </ul>
-            </nav>
-        </div>
-            
-        <div id="header-content" class="container">
-            <h1>Akarsh The
-                <span class="txt-type" data-wait="1000" 
-                data-words='["GenAI Engineer", "Full Stack Developer", "AI Builder"]'>
-                </span>
-            </h1>
-            <p class="lead">
-                I specialize in Generative AI, Agentic Systems, and Scalable Web Applications
-            </p>
-
-            <a class="btn-light">View My Work</a>
-        </div>
-
-    </header>
-
-<!-- Section: Skills -->
-<section id="skills" class="text-center py-2">
-    <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <div class="bottom-line"></div>
-        <ul class="skills-list">
-            <li><strong>Languages:</strong> Python, JavaScript, TypeScript, SQL, C++</li>
-            <li><strong>LLM & AI:</strong> LangChain, LangGraph, LlamaIndex, RAG, OpenAI, Gemini, Claude, HuggingFace</li>
-            <li><strong>Frameworks:</strong> FastAPI, Flask, Django, Node.js, React.js</li>
-            <li><strong>Databases & Vector Stores:</strong> MongoDB, MySQL, FAISS, ChromaDB, Pinecone, Redis</li>
-            <li><strong>DevOps & Tools:</strong> Docker, Kubernetes, Jenkins, Azure DevOps, OpenTelemetry</li>
-            <li><strong>Cloud:</strong> AWS, GCP, Azure</li>
-            <li><strong>Soft Skills:</strong> Problem Solving, System Design, Team Collaboration, Agile Development</li>
-        </ul>
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand">akarsh<span class="dot">.</span>srivastava</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">about</a>
+        <a href="#skills">skills</a>
+        <a href="#experience">experience</a>
+        <a href="#projects">projects</a>
+        <a href="#education">education</a>
+      </nav>
+      <a href="#contact" class="nav-cta">get in touch</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">menu</button>
     </div>
-</section>
+  </header>
 
-<!-- Footer -->
-<footer id="main-footer">
-    <div class="footer-content container">
-        <p>Copyright &copy; 2026. All Rights Reserved</p>
-
-        <div class="social">
-            <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://linkedin.com/in/akarsh1888" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <!-- ===== HERO ===== -->
+  <main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">genai &amp; agentic ai engineer</span>
+        <h1>
+          I architect <span class="accent">agentic AI</span> systems that ship to production.
+          <span class="type-line"><span id="typed"></span><span class="cursor">_</span></span>
+        </h1>
+        <p class="lead">
+          6+ years in software engineering, 2+ of them building and running large language model systems —
+          multi-agent orchestration, retrieval-augmented generation, and LLM evaluation at scale.
+        </p>
+        <p class="hero-meta">
+          <span>base</span> Python · LangGraph · LangChain · RAG · AWS Bedrock · Azure OpenAI &nbsp;|&nbsp;
+          <span>edu</span> M.Tech AI, IIT Jodhpur
+        </p>
+        <div class="btn-row">
+          <a href="#projects" class="btn btn-primary">view projects</a>
+          <a href="#contact" class="btn btn-ghost">contact me</a>
         </div>
-    </div>
-</footer>
+      </div>
 
+      <!-- signature: live agent orchestration graph -->
+      <div class="graph-card" aria-hidden="true">
+        <span class="tag">agent_graph.py — runtime</span>
+        <svg viewBox="0 0 360 420" role="img">
+          <!-- edges -->
+          <path class="edge" d="M180 60 V100" />
+          <path class="edge" d="M180 138 C120 160, 90 168, 84 196" />
+          <path class="edge" d="M180 138 C240 160, 270 168, 276 196" />
+          <path class="edge" d="M84 234 C90 262, 150 272, 180 288" />
+          <path class="edge" d="M276 234 C270 262, 210 272, 180 288" />
+          <path class="edge" d="M180 326 V366" />
+          <!-- animated signal following the main path -->
+          <path class="edge-flow" d="M180 60 V100 M180 138 C240 160, 270 168, 276 196 M276 234 C270 262, 210 272, 180 288 M180 326 V366" />
+
+          <!-- input -->
+          <g>
+            <rect class="node-box" x="126" y="28" width="108" height="34" rx="6" />
+            <text class="node-label" x="180" y="48" text-anchor="middle">input</text>
+          </g>
+          <!-- router -->
+          <g>
+            <rect class="node-box hot" x="118" y="102" width="124" height="38" rx="6" />
+            <text class="node-label" x="180" y="120" text-anchor="middle">router</text>
+            <text class="node-sub" x="180" y="132" text-anchor="middle">intent · ReAct</text>
+          </g>
+          <!-- retriever -->
+          <g>
+            <rect class="node-box" x="26" y="198" width="116" height="38" rx="6" />
+            <text class="node-label" x="84" y="216" text-anchor="middle">retriever</text>
+            <text class="node-sub" x="84" y="228" text-anchor="middle">hybrid RAG</text>
+          </g>
+          <!-- tools -->
+          <g>
+            <rect class="node-box hot" x="218" y="198" width="116" height="38" rx="6" />
+            <text class="node-label" x="276" y="216" text-anchor="middle">tools</text>
+            <text class="node-sub" x="276" y="228" text-anchor="middle">MCP · A2A</text>
+          </g>
+          <!-- judge -->
+          <g>
+            <rect class="node-box" x="118" y="290" width="124" height="38" rx="6" />
+            <text class="node-label" x="180" y="308" text-anchor="middle">judge</text>
+            <text class="node-sub" x="180" y="320" text-anchor="middle">eval · guardrails</text>
+          </g>
+          <!-- output -->
+          <g>
+            <rect class="node-box" x="126" y="368" width="108" height="34" rx="6" />
+            <text class="node-label" x="180" y="388" text-anchor="middle">response</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== METRICS ===== -->
+  <section class="metrics">
+    <div class="wrap">
+      <div class="metrics-grid">
+        <div class="metric reveal"><div class="num">60<span class="u">%</span></div><div class="cap">lower LLM token cost</div></div>
+        <div class="metric reveal"><div class="num">100<span class="u">+</span></div><div class="cap">production agents served</div></div>
+        <div class="metric reveal"><div class="num">90<span class="u">%+</span></div><div class="cap">RAG retrieval accuracy</div></div>
+        <div class="metric reveal"><div class="num">26<span class="u">%</span></div><div class="cap">lower median handling time</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="block" id="about">
+    <div class="wrap about">
+      <div class="section-head"><span class="eyebrow">about</span><h2 class="section-title">Building reliable AI systems, not demos</h2></div>
+      <div class="about-grid">
+        <div class="reveal">
+          <p>
+            I'm a <strong>GenAI &amp; Agentic AI Engineer</strong> with 6+ years of software engineering experience,
+            including 2+ years designing and shipping production large language model systems. My focus is the part
+            that's hard: making agents <strong>reliable, observable, and cost-efficient</strong> once they leave the notebook.
+          </p>
+          <p>
+            At NTT Data I architected a <strong>LangGraph multi-agent platform</strong> serving 100+ production agents,
+            built <strong>hybrid RAG</strong> pipelines over 50K+ documents, and stood up an <strong>LLM evaluation and
+            safety framework</strong> that catches regressions before they reach users. Before AI, I spent years as a
+            full-stack engineer at Oracle and beyond — which is why my systems come with real APIs, tests, and CI/CD.
+          </p>
+          <p>
+            I'm currently pursuing an <strong>M.Tech in Artificial Intelligence at IIT Jodhpur</strong>, and I'm open to
+            roles in Agentic AI, Generative AI, LLM, and AI/ML engineering.
+          </p>
+        </div>
+        <aside class="facts reveal">
+          <dl>
+            <dt>role</dt><dd>GenAI &amp; Agentic AI Engineer</dd>
+            <dt>experience</dt><dd>6+ yrs SWE · 2+ yrs LLM</dd>
+            <dt>current</dt><dd>NTT Data</dd>
+            <dt>education</dt><dd>M.Tech AI, IIT Jodhpur</dd>
+            <dt>focus</dt><dd>Agents · RAG · LLMOps</dd>
+            <dt>cloud</dt><dd>AWS · Azure · GCP</dd>
+            <dt>location</dt><dd>India</dd>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="block" id="skills">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">skills</span><h2 class="section-title">Technical stack</h2></div>
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <h3>agentic ai</h3>
+          <div class="chips">
+            <span class="chip">Multi-Agent Systems</span><span class="chip">Agent Orchestration</span>
+            <span class="chip">ReAct</span><span class="chip">Tool Calling</span><span class="chip">MCP</span><span class="chip">A2A</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>llm frameworks &amp; platforms</h3>
+          <div class="chips">
+            <span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">AWS Bedrock</span>
+            <span class="chip">Azure OpenAI</span><span class="chip">OpenAI API</span><span class="chip">Vertex AI</span><span class="chip">Cohere</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>rag &amp; vector stores</h3>
+          <div class="chips">
+            <span class="chip">RAG</span><span class="chip">Semantic Search</span><span class="chip">Embeddings</span>
+            <span class="chip">Re-ranking</span><span class="chip">Qdrant</span><span class="chip">pgvector</span><span class="chip">Neo4j</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>evaluation &amp; observability</h3>
+          <div class="chips">
+            <span class="chip">LangSmith</span><span class="chip">Langfuse</span><span class="chip">Ragas</span>
+            <span class="chip">DeepEval</span><span class="chip">LLM-as-Judge</span><span class="chip">NeMo Guardrails</span><span class="chip">Bedrock Guardrails</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>languages &amp; backend</h3>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">SQL</span>
+            <span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">Django</span><span class="chip">Node.js</span><span class="chip">gRPC</span><span class="chip">WebSockets</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>data &amp; cloud / devops</h3>
+          <div class="chips">
+            <span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">MongoDB</span><span class="chip">DynamoDB</span>
+            <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">GitHub Actions</span><span class="chip">CI/CD</span><span class="chip">MLOps</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">experience</span><h2 class="section-title">Where I've worked</h2></div>
+      <div class="xp">
+
+        <div class="xp-item reveal">
+          <div class="xp-head">
+            <span class="xp-role">Software Development Senior Specialist — <span class="xp-co">NTT Data</span></span>
+            <span class="xp-date">May 2024 — Present</span>
+          </div>
+          <ul class="xp-list">
+            <li>Architected a production multi-agent platform on <b>LangGraph</b> with ReAct reasoning, intent routing, persistent DynamoDB memory and Redis caching — cutting <b>median handling time 26%</b> at 96%+ response quality.</li>
+            <li>Built a <b>hybrid RAG pipeline over 50K+ documents</b> using dense embeddings, semantic search, Cohere re-ranking and vector databases, reaching <b>90%+ retrieval accuracy</b>.</li>
+            <li>Designed an <b>LLM proxy microservice</b> — a unified multi-model API (Bedrock + OpenAI) with fallbacks, prompt caching, auth, cost instrumentation and audit trails — <b>cutting token costs 60%</b> across 100+ agents.</li>
+            <li>Established an <b>LLM evaluation &amp; safety framework</b> combining human-in-the-loop review, LLM-as-judge scoring, guardrails and centralized observability to catch regressions pre-deployment.</li>
+          </ul>
+          <p class="xp-stack">Python · LangGraph · LangChain · MCP · A2A · AWS Bedrock · FastAPI · DynamoDB · Redis · Docker · Kubernetes</p>
+        </div>
+
+        <div class="xp-item reveal">
+          <div class="xp-head">
+            <span class="xp-role">Member of Technical Staff — <span class="xp-co">Oracle Corporation</span></span>
+            <span class="xp-date">Oct 2021 — May 2024</span>
+          </div>
+          <ul class="xp-list">
+            <li>Integrated REST APIs and real-time clinical data pipelines into Cerner's EHR platform, enabling live patient-data retrieval across ML-assisted diagnostic workflows with <b>67% adoption</b> across clinical teams.</li>
+            <li>Led platform-wide browser modernization (IE → Edge Chromium), cutting rendering time <b>85%</b> and CPU usage <b>33%</b>.</li>
+            <li>Built CI-integrated testing with React Testing Library, enabling teams to reach <b>100% critical-path coverage</b>.</li>
+            <li>Awarded the <b>Rising Star Award</b> for delivering the Edge Chromium migration two months ahead of schedule.</li>
+          </ul>
+          <p class="xp-stack">React · TypeScript · JavaScript · REST APIs · Node.js · CI/CD</p>
+        </div>
+
+        <div class="xp-item reveal">
+          <div class="xp-head">
+            <span class="xp-role">Software Engineer — <span class="xp-co">J.P. Software</span></span>
+            <span class="xp-date">Sep 2018 — Nov 2020</span>
+          </div>
+          <ul class="xp-list">
+            <li>Engineered real-time chat and search with persistent history for high-traffic applications, lifting user engagement <b>10%</b>.</li>
+            <li>Rebuilt the core transaction flow as a <b>React + Node.js SPA</b> (replacing a legacy multi-page app), cutting processing time <b>40%</b> and improving retention <b>25%</b>.</li>
+            <li>Created a Node.js production diagnostics module that improved stack-trace quality and cut debugging time for the team.</li>
+          </ul>
+          <p class="xp-stack">React · Node.js · JavaScript · REST APIs</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="block" id="projects">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">projects</span><h2 class="section-title">Selected work</h2></div>
+      <div class="proj-grid">
+
+        <div class="proj reveal">
+          <div class="proj-num">01</div>
+          <h3>Multi-Agent AI Platform</h3>
+          <p>Production Agentic AI platform orchestrating 100+ agents with ReAct reasoning, intent routing, persistent memory, tool calling and quality-gated sub-task decomposition. Reduced median handling time 26% at 96%+ quality.</p>
+          <div class="chips"><span class="chip">LangGraph</span><span class="chip">Python</span><span class="chip">DynamoDB</span><span class="chip">Redis</span><span class="chip">MCP</span></div>
+        </div>
+
+        <div class="proj reveal">
+          <div class="proj-num">02</div>
+          <h3>Hybrid RAG Knowledge System</h3>
+          <p>Retrieval-augmented generation over 50K+ documents with dense embeddings, semantic search and Cohere re-ranking against vector databases — 90%+ retrieval accuracy on internal evaluations.</p>
+          <div class="chips"><span class="chip">RAG</span><span class="chip">Qdrant</span><span class="chip">pgvector</span><span class="chip">Cohere</span><span class="chip">Bedrock</span></div>
+        </div>
+
+        <div class="proj reveal">
+          <div class="proj-num">03</div>
+          <h3>LLM Proxy &amp; Cost Optimizer</h3>
+          <p>Unified multi-model API (AWS Bedrock + OpenAI) with automatic fallbacks, prompt caching, authentication, cost instrumentation and immutable audit trails. Cut token costs 60% across all agents.</p>
+          <div class="chips"><span class="chip">FastAPI</span><span class="chip">Python</span><span class="chip">AWS Bedrock</span><span class="chip">OpenAI API</span></div>
+        </div>
+
+        <div class="proj reveal">
+          <div class="proj-num">04</div>
+          <h3>LLM Evaluation &amp; Safety Framework</h3>
+          <p>End-to-end evaluation and observability with LLM-as-judge, rule-based validation, guardrails and human-in-the-loop review — surfacing regressions before deployment.</p>
+          <div class="chips"><span class="chip">LangSmith</span><span class="chip">Langfuse</span><span class="chip">Ragas</span><span class="chip">DeepEval</span><span class="chip">NeMo Guardrails</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION & CERTS ===== -->
+  <section class="block" id="education">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">education &amp; certifications</span><h2 class="section-title">Credentials</h2></div>
+      <div class="edu-grid">
+        <div class="reveal" style="display:grid; gap:1.1rem;">
+          <div class="card">
+            <h3>M.Tech — Artificial Intelligence</h3>
+            <div class="meta">Indian Institute of Technology (IIT) Jodhpur · Dec 2024 — Dec 2026</div>
+          </div>
+          <div class="card">
+            <h3>B.Tech — Computer Science &amp; Engineering</h3>
+            <div class="meta">Shri Ramswaroop Memorial University · Aug 2013 — Jun 2017</div>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3 style="margin-bottom:1rem;">Certifications</h3>
+          <ul class="cert-list">
+            <li>Microsoft Certified: Azure AI Engineer Associate</li>
+            <li>Oracle Cloud Infrastructure — Certified Generative AI Professional</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="block contact" id="contact">
+    <div class="wrap">
+      <span class="eyebrow" style="display:block;">contact</span>
+      <h2>Let's build something intelligent.</h2>
+      <p>Open to Agentic AI, Generative AI, LLM and AI/ML engineering roles. The fastest way to reach me is email or LinkedIn.</p>
+      <div class="contact-links">
+        <a class="clink" href="mailto:akarshs625@gmail.com">✉ akarshs625@gmail.com</a>
+        <a class="clink" href="tel:+919451561585">☎ +91 94515 61585</a>
+        <a class="clink" href="https://www.linkedin.com/in/akarshs625" target="_blank" rel="noopener">in/akarshs625</a>
+        <a class="clink" href="https://github.com/akarsh1888" target="_blank" rel="noopener">github/akarsh1888</a>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="foot">
+    <div class="wrap foot-inner">
+      <span>© <span id="year"></span> Akarsh Srivastava</span>
+      <span>designed &amp; built · deployed on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // mobile nav
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+    }));
+
+    // typewriter — target role titles
+    (function () {
+      const el = document.getElementById('typed');
+      const words = ["Agentic AI Engineer.", "Generative AI Engineer.", "LLM Systems Engineer.", "AI Solutions Engineer."];
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) { el.textContent = words[0]; return; }
+      let w = 0, c = 0, deleting = false;
+      function tick() {
+        const word = words[w];
+        el.textContent = word.substring(0, c);
+        if (!deleting && c < word.length) { c++; setTimeout(tick, 70); }
+        else if (!deleting && c === word.length) { deleting = true; setTimeout(tick, 1500); }
+        else if (deleting && c > 0) { c--; setTimeout(tick, 35); }
+        else { deleting = false; w = (w + 1) % words.length; setTimeout(tick, 300); }
+      }
+      tick();
+    })();
+
+    // scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
 </body>
-<script src="js/typewriter.js"></script>
 </html>
